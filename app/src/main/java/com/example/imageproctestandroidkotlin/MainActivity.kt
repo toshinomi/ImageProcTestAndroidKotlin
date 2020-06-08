@@ -14,11 +14,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mImageView: ImageView
-    private lateinit var mBitmap: Bitmap
-    private lateinit var mBtnMono: Button
-    private lateinit var mBtnReset: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,14 +25,11 @@ class MainActivity : AppCompatActivity() {
      * レイアウトの初期設定
      */
     private fun initLayout() {
-        mImageView = findViewById(R.id.image)
-        mBitmap = BitmapFactory.decodeResource(resources, R.drawable.dog)
+        var btnMono: Button = findViewById(R.id.mono)
+        btnMono?.setOnClickListener { onClickBtnMono() }
 
-        mBtnMono = findViewById(R.id.mono)
-        mBtnMono?.setOnClickListener { onClickBtnMono() }
-
-        mBtnReset = findViewById(R.id.reset)
-        mBtnReset?.setOnClickListener { onClickBtnReset() }
+        var btnReset: Button = findViewById(R.id.reset)
+        btnReset?.setOnClickListener { onClickBtnReset() }
     }
 
     /**
@@ -45,14 +37,18 @@ class MainActivity : AppCompatActivity() {
      */
     private fun onClickBtnMono() {
         var gray = GrayScale()
-        var mutableBitmap = gray.goImgProc(mBitmap)
-        mImageView.setImageBitmap(mutableBitmap.copy(Bitmap.Config.ARGB_8888, false))
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.dog)
+        var mutableBitmap = gray.goImgProc(bitmap)
+        var imageView: ImageView = findViewById(R.id.image)
+        imageView?.setImageBitmap(mutableBitmap.copy(Bitmap.Config.ARGB_8888, false))
     }
 
     /**
      * リセットボタンのクリックイベント
      */
     private fun onClickBtnReset() {
-        mImageView.setImageBitmap(mBitmap)
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.dog)
+        var imageView: ImageView = findViewById(R.id.image)
+        imageView?.setImageBitmap(bitmap)
     }
 }
