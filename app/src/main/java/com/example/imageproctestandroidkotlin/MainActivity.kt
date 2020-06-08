@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private fun onClickBtnMono() {
         var gray = GrayScale()
         val bitmap = BitmapFactory.decodeResource(resources, R.drawable.dog)
-        var mutableBitmap = gray.goImgProc(bitmap)
+        var mutableBitmap = gray.goImageProcessing(bitmap)
         var imageView: ImageView = findViewById(R.id.image)
         imageView?.setImageBitmap(mutableBitmap.copy(Bitmap.Config.ARGB_8888, false))
     }

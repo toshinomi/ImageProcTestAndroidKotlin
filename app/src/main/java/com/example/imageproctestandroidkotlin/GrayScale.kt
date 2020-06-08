@@ -16,7 +16,7 @@ class GrayScale {
      * @args bitmap ビットマップ
      * @return return グレースケール後のビットマップ
      */
-    public fun goImgProc(bitmap: Bitmap): Bitmap {
+    public fun goImageProcessing(bitmap: Bitmap): Bitmap {
 
         var pixels = IntArray(bitmap.width * bitmap.height);
         var resultPixels = IntArray(bitmap.width * bitmap.height)
